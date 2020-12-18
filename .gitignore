@@ -8,3 +8,14 @@
 /quiz/*.iml
 /assignment/wordnet/logo.png
 *.pdf
+/assignment/SeamCarving/.idea
+/assignment/SeamCarving/lib
+/assignment/SeamCarving/*.iml
+/quiz/out/production/quiz/Unit4/UndirectedGraphs/*.class
+/quiz/out/test/quiz/Unit4/UndirectedGraphs/*.class
+/assignment/SeamCarving/out
+/assignment/SeamCarving/out/production/SeamCarving/MutableWeightedDiGraph.class
+/assignment/SeamCarving/out/production/SeamCarving/SeamCarver.class
+/assignment/SeamCarving/out/production/SeamCarving/ShortestPath.class
+/assignment/SeamCarving/out/test/SeamCarving/SeamCarverTest.class
+/assignment/SeamCarving/out/test/SeamCarving/ShortestPathTest.class

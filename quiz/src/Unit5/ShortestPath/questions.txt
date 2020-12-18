@@ -1,0 +1,15 @@
+1.
+Question 1
+Monotonic shortest path. Given an edge-weighted digraph GG, design an E \log EElogE algorithm to find a monotonic shortest path from ss to every other vertex. A path is monotonic if the sequence of edge weights along the path are either strictly increasing or strictly decreasing.
+Hint: relax edges in ascending order to find a best monotonically increasing path; relax edges in descending order to find a best monotonically decreasing path.
+
+
+2.
+Question 2
+Second shortest path. Given an edge-weighted digraph and let PP be a shortest path from vertex ss to vertex tt. Design an E \log VElogV algorithm to find a path (not necessarily simple) other than PP from ss to tt that is as short as possible. Assume all of the edge weights are strictly positive.
+Hint: compute the shortest path distances from ss to every vertex and the shortest path distances from every vertex to tt.
+
+3.
+Question 3
+Shortest path with one skippable edge. Given an edge-weighted digraph, design an E \log VElogV algorithm to find a shortest path from ss to tt where you can change the weight of any one edge to zero. Assume the edge weights are nonnegative.
+Hint: compute the shortest path from ss to every vertex; compute the shortest path from every vertex to tt; combine.
