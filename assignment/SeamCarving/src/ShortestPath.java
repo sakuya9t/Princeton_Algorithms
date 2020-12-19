@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.DirectedEdge;
+import edu.princeton.cs.algs4.EdgeWeightedDigraph;
 import edu.princeton.cs.algs4.IndexMinPQ;
 
 import java.util.Arrays;
@@ -9,26 +10,26 @@ public class ShortestPath {
     private final DirectedEdge[] edgeTo;
     private final double[] distTo;
 
-    public ShortestPath(Graph G, int s) {
+    public ShortestPath(EdgeWeightedDigraph G, int s) {
         this.edgeTo = new DirectedEdge[G.V()];
         this.distTo = new double[G.V()];
         doCalc(G, s);
     }
 
-    private void doCalc(Graph G, int s) {
+    private void doCalc(EdgeWeightedDigraph G, int s) {
         IndexMinPQ<Double> pq = new IndexMinPQ<>(G.V());
         Arrays.fill(this.distTo, Double.POSITIVE_INFINITY);
         this.distTo[s] = 0;
 
         pq.insert(s, 0.0);
-        while(!pq.isEmpty()) {
+        while (!pq.isEmpty()) {
             int v = pq.delMin();
-            for(DirectedEdge e: G.adj(v)) {
+            for (DirectedEdge e : G.adj(v)) {
                 double dist = e.weight() + distTo[v];
-                if(dist < distTo[e.to()]) {
+                if (dist < distTo[e.to()]) {
                     distTo[e.to()] = dist;
                     edgeTo[e.to()] = e;
-                    if(pq.contains(e.to())) pq.changeKey(e.to(), dist);
+                    if (pq.contains(e.to())) pq.changeKey(e.to(), dist);
                     else pq.insert(e.to(), dist);
                 }
             }
@@ -41,7 +42,7 @@ public class ShortestPath {
 
     public Iterable<DirectedEdge> pathTo(int v) {
         List<DirectedEdge> edges = new LinkedList<>();
-        while(edgeTo[v] != null) {
+        while (edgeTo[v] != null) {
             edges.add(0, edgeTo[v]);
             v = edgeTo[v].from();
         }

@@ -34,7 +34,7 @@ public class ShortestPathTest {
 
     @Before
     public void setUp() {
-        Graph g = new Graph();
+        EdgeWeightedDigraph g = new EdgeWeightedDigraph(8);
         edges.forEach(g::addEdge);
         sp = new ShortestPath(g, 0);
     }
@@ -62,12 +62,12 @@ public class ShortestPathTest {
                 Collections.singletonList(7)
         );
 
-        for(int i = 1; i < 8; i++) {
+        for (int i = 1; i < 8; i++) {
             Iterator<DirectedEdge> path = sp.pathTo(i).iterator();
-            Iterator<Integer> expected = order.get(i-1).iterator();
+            Iterator<Integer> expected = order.get(i - 1).iterator();
 
-            while(path.hasNext()) {
-                if(!expected.hasNext()) {
+            while (path.hasNext()) {
+                if (!expected.hasNext()) {
                     fail();
                 }
                 assertEquals(expected.next(), Integer.valueOf(path.next().to()));

@@ -33,7 +33,7 @@ public class SeamCarverTest {
         Picture picture = new Picture("6x5.png");
         SeamCarver carver = new SeamCarver(picture);
         int[] seam = carver.findHorizontalSeam();
-        assertArrayEquals(new int[]{1, 2, 1, 2, 1, 0}, seam);
+        assertArrayEquals(new int[]{3, 2, 1, 2, 1, 2}, seam);
     }
 
     @Test
@@ -41,6 +41,29 @@ public class SeamCarverTest {
         Picture picture = new Picture("6x5.png");
         SeamCarver carver = new SeamCarver(picture);
         int[] seam = carver.findVerticalSeam();
-        assertArrayEquals(new int[]{5, 4, 3, 2, 3}, seam);
+        assertArrayEquals(new int[]{5, 4, 3, 2, 1}, seam);
+    }
+
+    @Test
+    public void testRemoveHorizontalSeam() {
+        Picture picture = new Picture("6x5.png");
+        SeamCarver carver = new SeamCarver(picture);
+        carver.removeHorizontalSeam(new int[]{2, 3, 2, 1, 0, 1});
+
+        assertEquals(1000.00, carver.energy(1, 3), 1e-2);
+        assertEquals(237.35, carver.energy(1, 1), 1e-2);
+        assertEquals(211.51, carver.energy(4, 1), 1e-2);
+    }
+
+    @Test
+    public void testRemoveVerticalSeam() {
+        Picture picture = new Picture("6x5.png");
+        SeamCarver carver = new SeamCarver(picture);
+        carver.removeVerticalSeam(new int[]{3, 4, 3, 2, 2});
+
+        assertEquals(151.28, carver.energy(3, 1), 0.01);
+        assertEquals(1000.00, carver.energy(4, 1), 0.01);
+        assertEquals(133.47, carver.energy(1, 3), 0.01);
+        assertEquals(103.24, carver.energy(2, 3), 0.01);
     }
 }
